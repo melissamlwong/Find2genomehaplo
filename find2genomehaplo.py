@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 #This script is written by Melissa M.L. Wong (Melissa.Wong@unil.ch) to identify two differentiated haplotypes in draft genome assembly using exon-guided approach
-#To be added, exit program if fasta contains "|" symbol
 #need to parse aligncoords results
 
 import sys
 import os
+import re
 import argparse
 import subprocess
 from os.path import splitext
@@ -48,15 +48,19 @@ def which(program):
 
 def check_exefiles():
     """Check files and executables if they exist"""
+    firstline = args.infile.readline()
     Exit = False
     for binary in [dagchainer_bin,blastn_bin,makeblastdb_bin]:
         if which(binary):
             print "  * %s is working.\n" % (binary)
         else:
             sys.stderr.write("  * Error : %s is not working!!!\n" % (binary))
-            Exit = True  
+            Exit = True
+    if re.findall("|",firstline):
+        sys.stderr.write("  * Error : Input fasta file must not contain \"|\" symbol !!!\n")
+        Exit = True
     if Exit:
-        sys.stderr.write("*** Exiting ***\n%s\n" % p.print_help())
+        sys.stderr.write("\n*** Exiting ***\n\n")
         sys.exit()
 
 ##### Part 1 - Selection #####
