@@ -206,18 +206,18 @@ if __name__ == '__main__':
     args.gff.close() 
     extract_exon(args.ref,exon_dict)
     print "*** Step 2 of 6 : Extracting exon sequences completed\n"
-#    top2blastn(inputfile,str(num_threads),blastn_fullpath,makeblastdb_fullpath)
-#    print "*** Step 3 of 6 : Blastn exon sequences to input genome completed\n"
-#    extract_input(inputfile)
-#    print "*** Step 4 of 6 : Extracting input sequences completed\n"
-#    blast2seq(filter_identity,blastn_fullpath)
-#    print "*** Step 5 of 6 : Blast 2 sequences completed\n"
-#    dagchainer(dagchainer_fullpath)
-#    print "*** Step 6 of 6 : Dagchainer completed\n"
-#    print "*** Job completed"
-#    args.ref.close() 
-#    args.infile.close()
-#    os.remove("subject.fa")
-#    os.remove("query.fa")
-#    os.remove("out1.fa")
-#    os.remove("out2.fa")
+    top2blastn(inputfile,str(num_threads),blastn_fullpath,makeblastdb_fullpath)
+    print "*** Step 3 of 6 : Blastn exon sequences to input genome completed\n"
+    extract_input(inputfile)
+    print "*** Step 4 of 6 : Extracting input sequences completed\n"
+    blast2seq(filter_identity,blastn_fullpath)
+    print "*** Step 5 of 6 : Blast 2 sequences completed\n"
+    dagchainer(dagchainer_fullpath)
+    print "*** Step 6 of 6 : Dagchainer completed\n"
+    print "*** Job completed"
+    args.ref.close() 
+    args.infile.close()
+    os.remove("subject.fa")
+    os.remove("query.fa")
+    os.remove("out1.fa")
+    os.remove("out2.fa")
