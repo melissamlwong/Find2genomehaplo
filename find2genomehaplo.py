@@ -49,13 +49,6 @@ def which(program):
 def check_exefiles():
     """Check files and executables if they exist"""
     Exit = False
-    #check input files if exist
-#    if os.path.isfile(args.gff) and os.path.isfile(args.ref) and os.path.isfile(args.infile):
-#        print "  * All input files exist.\n"
-#    else:
-#        sys.stderr.write("  * Error : One or more files do not exist!!!\n" )
-#        Exit = True
-    #use for loop to loop over the executables, easy when adding new executables
     for binary in [dagchainer_bin,blastn_bin,makeblastdb_bin]:
         if which(binary):
             print "  * %s is working.\n" % (binary)
@@ -177,9 +170,10 @@ def blast2seq(filter_identity,exe):
         subject.write("%s\n%s\n" % (h2,s2))
         subject.close()
         query.close()
-        p=subprocess.Popen([exe,"-task","blastn","-subject","subject.fa","-query","query.fa","-evalue","1E-5","-outfmt","6"],stdout=subprocess.PIPE)
         hits=0
-        for line in p.stdout.readlines():
+        p=subprocess.Popen([exe,"-task","blastn","-subject","subject.fa","-query","query.fa","-evalue","1E-5","-outfmt","6"],stdout=subprocess.PIPE)
+        stdo, _ = p.communicate() #create a tupe of stdout and stderr, stdout is a string
+        for line in stdo.splitlines():
             if len(line.split("\t")) == 12:
                 rseq,qseq,nucid,ali_l,ali_s,ali_gap,rstart,rstop,qstart,qstop,evalue,score = line.split("\t")
                 blast.write("%s" % line)
