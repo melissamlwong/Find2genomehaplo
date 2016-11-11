@@ -24,9 +24,9 @@ filter_identity = 90
 def optparser():
     """Option parser"""
     p = argparse.ArgumentParser(description='Identify two haplotypes in a higly heterozygous genome assembly using reference genome')
-    p.add_argument("infile", type=argparse.FileType('r'), help="input fasta file")
-    p.add_argument("ref", type=argparse.FileType('r'), help="masked reference genome")
-    p.add_argument("gff", type=argparse.FileType('r'), help="gff3 file")
+    p.add_argument("infile", type=argparse.FileType('r'), help="fasta file of heterozygous genome")
+    p.add_argument("ref", type=argparse.FileType('r'), help="fasta file of masked reference genome")
+    p.add_argument("gff", type=argparse.FileType('r'), help="gff3 file of reference genome")
     args = p.parse_args()
     return args
 
