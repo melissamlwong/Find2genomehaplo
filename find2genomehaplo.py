@@ -31,7 +31,7 @@ def optparser():
     return args
 
 def which(program):
-    """ Fuction from Stackoverflow to check if executables are working """
+    """ Function written by Jay from Stackoverflow to check if executables are working """
     def is_exe(fpath):
         return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
     fpath, fname = os.path.split(program)
@@ -87,6 +87,7 @@ def exonpos(gff):
 def extract_exon(ref,extract):
     """Extract exon sequences when given a nested dictionary"""
     exon = open("exon.fa",'w')
+    #Function written by brentp from Biostar
     faiter = (x[1] for x in groupby(ref, lambda line: line[0] == ">"))
     for header in faiter:
         header = header.next()[1:].strip()
