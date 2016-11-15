@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #This script is written by Melissa M.L. Wong (Melissa.Wong@unil.ch) to identify two differentiated haplotypes in draft genome assembly using exon-guided approach
-#need to parse aligncoords results
+#Further development: parsing aligncoords results
 
 import sys
 import os
